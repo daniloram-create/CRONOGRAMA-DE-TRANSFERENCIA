@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronograma Logístico</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --pires: #38bdf8;
+      --dellute: #a78bfa;
+      --futfanatics: #10b981;
+      --hub: #f59e0b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .modal {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 900px;
+      padding: 28px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .header .subtitle {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .day-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .day-title {
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .badge-pires { background: rgba(56, 189, 248, 0.15); color: var(--pires); }
+    .badge-dellute { background: rgba(167, 139, 250, 0.15); color: var(--dellute); }
+
+    .location-group {
+      border-left: 2px solid var(--border);
+      padding-left: 10px;
+      margin-top: 4px;
+    }
+
+    .loc-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .loc-futfanatics { color: var(--futfanatics); }
+    .loc-hub { color: var(--hub); }
+
+    .action-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .footer-legend {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="modal">
+    <div class="header">
+      <div>
+        <h2>🚚 Cronograma de Transferências & Devoluções</h2>
+        <div class="subtitle">Mapeamento operacional por transportadora e unidade</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Segunda -->
+      <div class="day-card">
+        <div class="day-title">
+          <span>Segunda-feira</span>
+          <span class="badge badge-pires">Pires</span>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-futfanatics">FutFanatics</div>
+          <div class="action-text">📦 Coleta carga<br>🔄 Entrega devoluções (Sexta)</div>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-hub">HUB</div>
+          <div class="action-text">📦 Entrega cargas<br>🔄 Coleta devoluções (Segunda)</div>
+        </div>
+      </div>
+
+      <!-- Terça -->
+      <div class="day-card">
+        <div class="day-title">
+          <span>Terça-feira</span>
+          <span class="badge badge-pires">Pires</span>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-futfanatics">FutFanatics</div>
+          <div class="action-text">📦 Coleta carga<br>🔄 Entrega devoluções (Segunda)</div>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-hub">HUB</div>
+          <div class="action-text">📦 Entrega cargas<br>🚫 Não carrega devoluções</div>
+        </div>
+      </div>
+
+      <!-- Quarta -->
+      <div class="day-card">
+        <div class="day-title">
+          <span>Quarta-feira</span>
+          <span class="badge badge-dellute">Dellute</span>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-futfanatics">FutFanatics</div>
+          <div class="action-text">📦 Carrega cargas<br>🚫 Sem devolução para entregar</div>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-hub">HUB</div>
+          <div class="action-text">📦 Entrega cargas<br>🔄 Coleta devoluções (Ter/Qua)</div>
+        </div>
+      </div>
+
+      <!-- Quinta -->
+      <div class="day-card">
+        <div class="day-title">
+          <span>Quinta-feira</span>
+          <span class="badge badge-dellute">Dellute</span>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-futfanatics">FutFanatics</div>
+          <div class="action-text">📦 Carrega cargas<br>🔄 Entrega devoluções (Ter/Qua)</div>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-hub">HUB</div>
+          <div class="action-text">📦 Entrega cargas<br>🔄 Coleta devoluções (Quinta)</div>
+        </div>
+      </div>
+
+      <!-- Sexta -->
+      <div class="day-card">
+        <div class="day-title">
+          <span>Sexta-feira</span>
+          <span class="badge badge-dellute">Dellute</span>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-futfanatics">FutFanatics</div>
+          <div class="action-text">🚫 Sem carga p/ transferência<br>🔄 Apenas entrega devoluções</div>
+        </div>
+      </div>
+
+      <!-- Sábado -->
+      <div class="day-card">
+        <div class="day-title">
+          <span>Sábado</span>
+          <span class="badge badge-pires">Pires</span>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-futfanatics">FutFanatics</div>
+          <div class="action-text">📦 Carrega cargas p/ transferência<br>🚫 Sem devoluções</div>
+        </div>
+      </div>
+
+      <!-- Domingo -->
+      <div class="day-card">
+        <div class="day-title">
+          <span>Domingo</span>
+          <span class="badge badge-pires">Pires</span>
+        </div>
+        <div class="location-group">
+          <div class="loc-tag loc-hub">HUB</div>
+          <div class="action-text">📦 Descarrega carga (saída de Sáb/FutFanatics)<br>🔄 Coleta devoluções (Sexta)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legend">
+      <span>🟢 <strong>FutFanatics:</strong> Unidade de Origem</span>
+      <span>🟠 <strong>HUB:</strong> Centro de Distribuição</span>
+    </div>
+  </div>
+
+</body>
+</html>
